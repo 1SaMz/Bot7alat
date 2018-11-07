@@ -1,43 +1,61 @@
-const Discord = require("discord.js");
+const Discord = require("discord.js")
 const client = new Discord.Client();
-var prefix = "d";
-var adminprefix = '-'
-const developers = ["434445470946033665"]
-client.on('message', message => {
-    var argresult = message.content.split(` `).slice(1).join(' ');
-      if (!developers.includes(message.author.id)) return;
-      
-  if (message.content.startsWith(adminprefix + 'setg')) {
-    client.user.setGame(argresult);
-      message.channel.send(`**?   ${argresult}**`)
-  } else 
-     if (message.content === (adminprefix + "leave")) {
-    message.guild.leave();        
-  } else  
-  if (message.content.startsWith(adminprefix + 'setw')) {
-  client.user.setActivity(argresult, {type:'WATCHING'});
-      message.channel.send(`**?   ${argresult}**`)
-  } else 
-  if (message.content.startsWith(adminprefix + 'setl')) {
-  client.user.setActivity(argresult , {type:'LISTENING'});
-      message.channel.send(`**?   ${argresult}**`)
-  } else 
-  if (message.content.startsWith(adminprefix + 'sets')) {
-    client.user.setGame(argresult, "https://www.twitch.tv/One");
-      message.channel.send(`**?**`)
-  }
-  if (message.content.startsWith(adminprefix + 'setname')) {
-  client.user.setUsername(argresult).then
-      message.channel.send(`Changing The Name To ..**${argresult}** `)
-} else
-if (message.content.startsWith(adminprefix + 'setavatar')) {
-  client.user.setAvatar(argresult);
-    message.channel.send(`Changing The Avatar To :**${argresult}** `);
-}
+var prefix = "#"
+
+
+
+client.on('message', function(message) {
+    const myID = "434445470946033665";
+    let args = message.content.split(" ").slice(1).join(" ");
+    if(message.content.startsWith(prefix + "sn")) {
+                if(message.author.id !== myID) return;
+            if(!args) return message.reply('اكتب الحالة اللي تريدها.');
+        client.user.setUsername(args);
+        message.channel.send('**SetName,Done!**').then(msg => {
+           msg.delete(5000);
+          message.delete(5000);
+        });
+    } else if(message.content.startsWith(prefix + "st")) {
+                if(message.author.id !== myID) return;
+            if(!args) return message.reply('اكتب الحالة اللي تريدها.');
+        client.user.setGame(args , 'https://twitch.tv/6xlez1');
+        message.channel.send('**Streaming,Done!🎶**').then(msg => {
+           msg.delete(5000);
+          message.delete(5000);
+        });
+    } else if(message.content.startsWith(prefix + "p")) {
+                        if(message.author.id !== myID) return;
+            if(!args) return message.reply('اكتب الحالة اللي تريدها.');
+        client.user.setGame(args);
+        message.channel.send('**Playing,Done!🎶**').then(msg => {
+           msg.delete(5000);
+          message.delete(5000);
+        });
+    } else if(message.content.startsWith(prefix + "l")) {
+                        if(message.author.id !== myID) return;
+            if(!args) return message.reply('اكتب الحالة اللي تريدها.');
+        client.user.setActivity(args, {type:'LISTENING'});
+        message.channel.send('**Listening,Done!🎶**').then(msg => {
+           msg.delete(5000);
+          message.delete(5000);
+        });
+    } else if(message.content.startsWith(prefix + "w")) {
+                        if(message.author.id !== myID) return;
+            if(!args) return message.reply('اكتب الحالة اللي تريدها.');
+        client.user.setActivity(args, {type:'WATCHING'});
+        message.channel.send('**Watching,Done!🎶**').then(msg => {
+           msg.delete(5000);
+          message.delete(5000);
+        });
+    } else if(message.content.startsWith(prefix + "setavatar")) {
+                        if(message.author.id !== myID) return;
+        client.user.setAvatar(args);
+        message.channel.send(':white_check_mark: Done!').then(msg => {
+                if(!args) return message.reply('اكتب الحالة اللي تريدها.');
+           msg.delete(5000);
+          message.delete(5000);
+        });
+    }
 });
 
-
-
-
-
-client.login(process.env.BOT_TOKEN);// لا تغير فيها شيء
+client.login(process.env.BOT_TOKEN); 
