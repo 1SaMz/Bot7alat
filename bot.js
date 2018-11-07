@@ -37,7 +37,6 @@ if (message.content.startsWith(adminprefix + 'sa')) {
 });
 
 
-client.login(process.env.BOT_TOKEN);//
-
+client.login(process.env.BOT_TOKEN);
 
 
