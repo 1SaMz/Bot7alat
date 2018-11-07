@@ -3,9 +3,6 @@ const partly = new Discord.Client();
 const adminprefix = "-";
 const developers = ['434445470946033665'];
 
-console.log("Paaaaaaaaaaaartly");
-
-
 partly.on('message', message => {
     var argresult = message.content.split(` `).slice(1).join(' ');
       if (!developers.includes(message.author.id)) return;
