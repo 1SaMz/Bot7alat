@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const partly = new Discord.Client();
 const adminprefix = "-";
-const developers = ['498063352426135572'];
+const developers = ['434445470946033665'];
 
 console.log("3thhhhhhhhhhh2b.");
 
@@ -38,6 +38,7 @@ if (message.content.startsWith(adminprefix + 'sa')) {
     message.channel.send(جاري تغيير الأفتار... : );
 }
 });
+
 
 client.login(process.env.BOT_TOKEN);//
 
